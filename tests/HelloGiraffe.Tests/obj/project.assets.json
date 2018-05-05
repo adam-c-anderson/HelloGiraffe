@@ -8632,11 +8632,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Code\\adam\\HelloGiraffe\\tests\\HelloGiraffe.Tests\\HelloGiraffe.Tests.fsproj",
+      "projectUniqueName": "C:\\Code\\adam\\HelloGiraffe\\tests\\HelloGiraffe.Tests\\HelloGiraffe.Tests.fsproj",
       "projectName": "HelloGiraffe.Tests",
-      "projectPath": "c:\\Code\\adam\\HelloGiraffe\\tests\\HelloGiraffe.Tests\\HelloGiraffe.Tests.fsproj",
+      "projectPath": "C:\\Code\\adam\\HelloGiraffe\\tests\\HelloGiraffe.Tests\\HelloGiraffe.Tests.fsproj",
       "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
-      "outputPath": "c:\\Code\\adam\\HelloGiraffe\\tests\\HelloGiraffe.Tests\\obj\\",
+      "outputPath": "C:\\Code\\adam\\HelloGiraffe\\tests\\HelloGiraffe.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8656,8 +8656,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "c:\\Code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\HelloGiraffe.fsproj": {
-              "projectPath": "c:\\Code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\HelloGiraffe.fsproj"
+            "C:\\Code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\HelloGiraffe.fsproj": {
+              "projectPath": "C:\\Code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\HelloGiraffe.fsproj"
             }
           }
         }

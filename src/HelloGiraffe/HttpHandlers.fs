@@ -10,7 +10,7 @@ module HttpHandlers =
         fun (next : HttpFunc) (ctx : HttpContext) ->
             task {
                 let response = {
-                    Text = "Hello world, from Giraffe!"
+                    Text = "Hello world, from HelloGiraffe!"
                 }
                 return! json response next ctx
             }
