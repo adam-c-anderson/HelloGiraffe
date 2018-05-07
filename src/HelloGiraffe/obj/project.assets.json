@@ -7070,11 +7070,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\HelloGiraffe.fsproj",
+      "projectUniqueName": "C:\\code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\HelloGiraffe.fsproj",
       "projectName": "HelloGiraffe",
-      "projectPath": "c:\\Code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\HelloGiraffe.fsproj",
+      "projectPath": "C:\\code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\HelloGiraffe.fsproj",
       "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
-      "outputPath": "c:\\Code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\obj\\",
+      "outputPath": "C:\\code\\adam\\HelloGiraffe\\src\\HelloGiraffe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

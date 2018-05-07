@@ -5,10 +5,7 @@
     "tasks": [
         {
             "label": "build",
-            "command": "./build.sh",
-            "windows": {
-                "command": ".\\build.bat"
-            },
+            "command": "fake run build.fsx",
             "type": "shell",
             "group": "build",
             "presentation": {
