@@ -7,37 +7,41 @@ nuget Fake.IO.FileSystem
 // include Fake modules, see Fake modules section
 
 open Fake.Core
+open Fake.Core.TargetOperators
 open Fake.DotNet
 open Fake.IO.Globbing.Operators
 
-let allProjects =
+let allProjs =
   !! "src/*/"
   ++ "tests/*/"
+
+let pubProj = "src/HelloGiraffe"
 
 // *** Define Targets ***
 Target.create "Clean" (fun _ ->
   Trace.log " --- Cleaning stuff --- "
-  for proj in allProjects do
+  for proj in allProjs do
     DotNet.exec id "clean" proj |> ignore
 )
 
 Target.create "Build" (fun _ ->
   Trace.log " --- Building the app --- "
-  for proj in allProjects do
+  for proj in allProjs do
     DotNet.exec id "build" proj |> ignore
 )
 
 Target.create "Test" (fun _ ->
   Trace.log " --- Running tests --- "
-  DotNet.exec id "test" "tests/HelloGiraffe.Tests" |> ignore
+  let testProjs = !! "tests/*/"
+  for testProj in testProjs do
+    DotNet.exec id "test" testProj |> ignore
 )
 
 Target.create "Publish" (fun _ ->
   Trace.log " --- Publishing app --- "
-  DotNet.exec id "publish" "src/HelloGiraffe" |> ignore
+  let args = sprintf "%s --configuration Release" pubProj
+  DotNet.exec id "publish" args |> ignore
 )
-
-open Fake.Core.TargetOperators
 
 // *** Define Dependencies ***
 "Clean"
@@ -46,4 +50,4 @@ open Fake.Core.TargetOperators
   ==> "Publish"
 
 // *** Start Build ***
-Target.runOrDefault "Publish"
+Target.runOrDefault "Test"
