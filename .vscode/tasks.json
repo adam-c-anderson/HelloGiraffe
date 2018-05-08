@@ -5,7 +5,7 @@
     "tasks": [
         {
             "label": "build",
-            "command": "fake run build.fsx",
+            "command": "fake build target build",
             "type": "shell",
             "group": "build",
             "presentation": {

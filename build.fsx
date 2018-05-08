@@ -50,4 +50,4 @@ Target.create "Publish" (fun _ ->
   ==> "Publish"
 
 // *** Start Build ***
-Target.runOrDefault "Test"
+Target.runOrDefault "Publish"
