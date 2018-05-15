@@ -8,12 +8,14 @@ open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open HelloGiraffe.HttpHandlers
+open Giraffe.ComputationExpressions
 
 // ---------------------------------
 // Web app
 // ---------------------------------
 
 open HelloGiraffe.Models
+open System.Runtime.CompilerServices
 
 // handleRoutef and handleRoutef' are equivalent
 let handleRoutef (s, i) =
@@ -30,6 +32,29 @@ let handleRoutef' (s, i) =
   }
   json result
 
+let abort = System.Threading.Tasks.Task.FromResult None
+
+let handleQuery1 (next : HttpFunc) (ctx : Microsoft.AspNetCore.Http.HttpContext) =
+  let query = opt {
+    let! foo = ctx.TryGetQueryStringValue "foo"
+    let! bar = ctx.TryGetQueryStringValue "bar"
+    return (foo, bar)
+  }
+  match query with
+  | Some (foo, bar) -> text (sprintf "foo = %s, bar = %s" foo bar) next ctx
+  | None -> abort
+
+let handleQuery2 (next : HttpFunc) (ctx : Microsoft.AspNetCore.Http.HttpContext) =
+  let query = opt {
+    let! bat = ctx.TryGetQueryStringValue "bat"
+    let! car = ctx.TryGetQueryStringValue "car"
+    return (bat, car)
+  }
+  match query with
+  | Some (bat, car) -> text (sprintf "bat = %s, car = %s" bat car) next ctx
+  | None -> abort
+
+
 let webApp =
     choose [
         subRoute "/api"
@@ -37,6 +62,10 @@ let webApp =
                 GET >=> choose [
                     route "/hello" >=> handleGetHello
                     routef "/routef/%s/%i" handleRoutef'
+                    route "/query" >=> choose [
+                      handleQuery1
+                      handleQuery2
+                    ]
                 ]
             ])
         setStatusCode 404 >=> text "Not Found" ]
