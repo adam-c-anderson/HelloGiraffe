@@ -13,12 +13,30 @@ open HelloGiraffe.HttpHandlers
 // Web app
 // ---------------------------------
 
+open HelloGiraffe.Models
+
+// handleRoutef and handleRoutef' are equivalent
+let handleRoutef (s, i) =
+  fun (next : HttpFunc) (ctx : Microsoft.AspNetCore.Http.HttpContext) ->
+    let result = {
+      Text = sprintf "s = %s, i = %i" s i
+    }
+    json result next ctx
+
+// handleRoutef and handleRoutef' are equivalent
+let handleRoutef' (s, i) =
+  let result = {
+    Text = sprintf "s' = %s, i' = %i" s i
+  }
+  json result
+
 let webApp =
     choose [
         subRoute "/api"
             (choose [
                 GET >=> choose [
                     route "/hello" >=> handleGetHello
+                    routef "/routef/%s/%i" handleRoutef'
                 ]
             ])
         setStatusCode 404 >=> text "Not Found" ]
